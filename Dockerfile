@@ -13,7 +13,9 @@ RUN apt-get install -yqq build-essential libbz2-dev libssl-dev libreadline-dev \
                          libatlas3-base libhdf5-dev libxml2-dev libxslt-dev \
                          zlib1g-dev pkg-config graphviz liblapacke-dev \
                          locales nodejs
-
+RUN apt-get update && apt-get install -y --allow-downgrades --no-install-recommends \
+    libcudnn7=7.0.4.31-1+cuda9.0 \
+    libcudnn7-dev=7.0.4.31-1+cuda9.0 
 RUN curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 ENV PYENV_ROOT /root/.pyenv
 ENV PATH /root/.pyenv/shims:/root/.pyenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
